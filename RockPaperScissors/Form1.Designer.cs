@@ -64,7 +64,7 @@
             this.rockButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.rockButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rockButton.Location = new System.Drawing.Point(50, 160);
-            this.rockButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rockButton.Margin = new System.Windows.Forms.Padding(4);
             this.rockButton.Name = "rockButton";
             this.rockButton.Size = new System.Drawing.Size(62, 62);
             this.rockButton.TabIndex = 1;
@@ -77,7 +77,7 @@
             this.paperButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.paperButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.paperButton.Location = new System.Drawing.Point(50, 249);
-            this.paperButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.paperButton.Margin = new System.Windows.Forms.Padding(4);
             this.paperButton.Name = "paperButton";
             this.paperButton.Size = new System.Drawing.Size(62, 62);
             this.paperButton.TabIndex = 2;
@@ -90,7 +90,7 @@
             this.scissorsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.scissorsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.scissorsButton.Location = new System.Drawing.Point(50, 336);
-            this.scissorsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.scissorsButton.Margin = new System.Windows.Forms.Padding(4);
             this.scissorsButton.Name = "scissorsButton";
             this.scissorsButton.Size = new System.Drawing.Size(62, 62);
             this.scissorsButton.TabIndex = 3;
@@ -154,7 +154,7 @@
             this.cpuImage.BackColor = System.Drawing.Color.Transparent;
             this.cpuImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cpuImage.Location = new System.Drawing.Point(641, 44);
-            this.cpuImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cpuImage.Margin = new System.Windows.Forms.Padding(4);
             this.cpuImage.Name = "cpuImage";
             this.cpuImage.Size = new System.Drawing.Size(215, 351);
             this.cpuImage.TabIndex = 14;
@@ -165,7 +165,7 @@
             this.playerImage.BackColor = System.Drawing.Color.Transparent;
             this.playerImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.playerImage.Location = new System.Drawing.Point(180, 44);
-            this.playerImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.playerImage.Margin = new System.Windows.Forms.Padding(4);
             this.playerImage.Name = "playerImage";
             this.playerImage.Size = new System.Drawing.Size(215, 351);
             this.playerImage.TabIndex = 13;
@@ -176,7 +176,7 @@
             this.resultImage.BackColor = System.Drawing.Color.Transparent;
             this.resultImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.resultImage.Location = new System.Drawing.Point(404, 129);
-            this.resultImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.resultImage.Margin = new System.Windows.Forms.Padding(4);
             this.resultImage.Name = "resultImage";
             this.resultImage.Size = new System.Drawing.Size(229, 179);
             this.resultImage.TabIndex = 15;
@@ -200,8 +200,9 @@
             this.Controls.Add(this.paperButton);
             this.Controls.Add(this.rockButton);
             this.Controls.Add(this.chooseLabel);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rock Paper Scissors";
