@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.Threading;
+using System.Drawing.Imaging;
 
 /// <summary>
 /// A rock, paper, scissors game that utilizes basic methods
@@ -21,9 +22,6 @@ namespace RockPaperScissors
     {
         string playerChoice, cpuChoice;
 
-        int wins = 0;
-        int losses = 0;
-        int ties = 0;
         int choicePause = 1000;
         int outcomePause = 3000;
 
@@ -32,13 +30,12 @@ namespace RockPaperScissors
         SoundPlayer jabPlayer = new SoundPlayer(Properties.Resources.jabSound);
         SoundPlayer gongPlayer = new SoundPlayer(Properties.Resources.gong);
 
-        Image rockImage = Properties.Resources.rock168x280;
-        Image paperImage = Properties.Resources.paper168x280;
-        Image scissorImage = Properties.Resources.scissors168x280;
-        Image winImage = Properties.Resources.winTrans;
-        Image loseImage = Properties.Resources.loseTrans;
-        Image tieImage = Properties.Resources.tieTrans;
 
+        int[] winLossTie = new int[] { 0, 0, 0 };
+        Image[] winLossTieImages = new Image[] { Properties.Resources.winTrans, Properties.Resources.loseTrans, Properties.Resources.tieTrans };
+
+        string[] moveList = new string[] { "Rock", "Paper", "Scissors" };
+        Image[] imageList = new Image[] { Properties.Resources.rock168x280, Properties.Resources.paper168x280, Properties.Resources.scissors168x280 };
         public Form1()
         {
             InitializeComponent();
@@ -46,18 +43,64 @@ namespace RockPaperScissors
 
         private void rockButton_Click(object sender, EventArgs e)
         {
-            /// TODO Set the playerchoice value, show the appropriate image,
-            /// play a sound, wait for a second; repeat for the computer turn 
+            playerMakesChoice(0);
         }
 
         private void paperButton_Click(object sender, EventArgs e)
         {
-
+            playerMakesChoice(1);
         }
 
         private void scissorsButton_Click(object sender, EventArgs e)
         {
+            playerMakesChoice(2);
+        }
 
+        void playerMakesChoice(int choiceNum)
+        {
+            /// TODO Set the playerchoice value, show the appropriate image,
+            /// play a sound, wait for a second; repeat for the computer turn 
+            //PLAYER TURN
+            playerChoice = moveList[choiceNum];
+            playerImage.BackgroundImage = imageList[choiceNum];
+
+            jabPlayer.Play();
+
+            Wait(choicePause);
+
+            //CPU TURN
+            int cpuChoiceNum = randGen.Next(0, 2);
+
+            cpuChoice = moveList[cpuChoiceNum];
+            cpuImage.BackgroundImage = imageList[cpuChoiceNum];
+
+            jabPlayer.Play();
+
+            Wait(choicePause);
+
+            //EVALUATION
+            if (playerChoice == cpuChoice) { OutcomeIs(2); }
+            else if ((playerChoice == "Rock" && cpuChoice == "Paper")|| (playerChoice == "Paper" && cpuChoice == "Scissors")||(playerChoice == "Scissors" && cpuChoice == "Rock"))
+            { OutcomeIs(1); }
+            else { OutcomeIs(0); }
+        
+             Wait(outcomePause);
+            cpuImage.BackgroundImage = null;
+            playerImage.BackgroundImage = null;
+            resultImage.BackgroundImage = null;
+        }
+
+        void Wait(int time) 
+        {
+            Refresh();
+            Thread.Sleep(time);
+        }
+
+        void OutcomeIs(int outcome) 
+        {
+            gongPlayer.Play();
+            winLossTie[outcome]++;
+            resultImage.BackgroundImage = winLossTieImages[outcome];
         }
     }
 }
